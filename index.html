@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LittleSteps Network Task Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>LittleSteps Preschool Network</h1>
+        <p>Task Management Portal</p>
+      </div>
+      <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+    </header>
+
+    <main>
+      <section class="card form-card">
+        <h2>Create Task</h2>
+        <form id="taskForm">
+          <div class="grid">
+            <label>
+              Task Title
+              <input id="title" required maxlength="80" placeholder="Prepare literacy corner" />
+            </label>
+            <label>
+              Campus
+              <select id="campus" required>
+                <option value="">Select Campus</option>
+                <option>North Campus</option>
+                <option>South Campus</option>
+                <option>East Campus</option>
+                <option>West Campus</option>
+              </select>
+            </label>
+            <label>
+              Department
+              <select id="department" required>
+                <option value="">Select Department</option>
+                <option>Education Team</option>
+                <option>Operations Team</option>
+                <option>Health & Safety</option>
+                <option>Parent Relations</option>
+              </select>
+            </label>
+            <label>
+              Assignee
+              <input id="assignee" required placeholder="e.g. Ms. Rivera" />
+            </label>
+            <label>
+              Priority
+              <select id="priority" required>
+                <option>Low</option>
+                <option selected>Medium</option>
+                <option>High</option>
+                <option>Critical</option>
+              </select>
+            </label>
+            <label>
+              Due Date
+              <input id="dueDate" type="date" required />
+            </label>
+          </div>
+          <label>
+            Description
+            <textarea id="description" required rows="3" maxlength="280" placeholder="Describe expected outcome and any supplies needed."></textarea>
+          </label>
+          <button class="primary" type="submit">Add Task</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="section-header">
+          <h2>Task Board</h2>
+          <div class="filters">
+            <select id="statusFilter">
+              <option value="all">All Statuses</option>
+              <option value="Open">Open</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+            <select id="priorityFilter">
+              <option value="all">All Priorities</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+              <option value="Critical">Critical</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="metrics" class="metrics"></div>
+        <div id="taskList" class="task-list"></div>
+      </section>
+    </main>
+
+    <template id="taskTemplate">
+      <article class="task-item">
+        <div class="task-main">
+          <h3></h3>
+          <p class="meta"></p>
+          <p class="desc"></p>
+        </div>
+        <div class="task-actions">
+          <span class="badge priority"></span>
+          <select class="status-select" aria-label="Update task status">
+            <option>Open</option>
+            <option>In Progress</option>
+            <option>Completed</option>
+          </select>
+          <button class="danger">Delete</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
